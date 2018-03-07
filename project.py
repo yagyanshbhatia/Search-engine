@@ -67,6 +67,7 @@ def generate_inverted_index():
         	tokens = nltk.word_tokenize(line)
         	for word in tokens:
         		vect5[ps.stem(word)].append(lineno)
+
         	lineno=lineno+1;		
 	vect5_for_docs[file] = vect5
 
@@ -137,8 +138,6 @@ def get_dot_product(vector1, vector2):
         if i in keys2:
             sum += vector1[i] * vector2[i]
     return sum
-
-
 
 
 
@@ -225,7 +224,8 @@ create_tf_idf_vector()
 #     print()
 #     count += 1
 
-# print vect5_for_docs
+
+print vect5_for_docs
 
 while True:
     query = raw_input("Please enter your query....")
@@ -242,6 +242,7 @@ while True:
         for word in query_list:
         	x.add(str(vect5_for_docs[str(tup[0])][word]))
         print x
+
     print()
 
 

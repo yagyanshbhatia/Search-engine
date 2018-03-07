@@ -62,10 +62,11 @@ def generate_inverted_index():
     	vect5=defaultdict(list)
         f=address+'/'+file
         lines=open(f).read().splitlines()
+        ps = nltk.stem.PorterStemmer()
         for line in lines:
-        	t=line.split(' ')
-        	for word in t:
-        		vect5[word].append(lineno)
+        	tokens = nltk.word_tokenize(line)
+        	for word in tokens:
+        		vect5[ps.stem(word)].append(lineno)
         	lineno=lineno+1;		
 	vect5_for_docs[file] = vect5
 
@@ -221,8 +222,6 @@ create_tf_idf_vector()
 #     print()
 #     count += 1
 
-print vect5_for_docs
-
 while True:
     query = raw_input("Please enter your query....")
     if len(query) == 0:
@@ -234,12 +233,13 @@ while True:
 
     for tup in result_set:
         print("The docname is " + str(tup[0]) + " and the weight is " + str(tup[1]))
-        spli=query.split(' ')
+        F = open(address +'/' + str(tup[0])).read().splitlines()
         x = set()
-        for word in spli:
+        for word in query_list:
         	x.add(str(vect5_for_docs[str(tup[0])][word]))
         for t in x:
-        	print t
-    print()
+        	for n in t[1:-1]:
+        		print n + ': ' + F[int(n) - 1]
+        	
 
 

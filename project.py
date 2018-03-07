@@ -237,7 +237,9 @@ while True:
         spli=query.split(' ')
         x = set()
         for word in spli:
-        	for num in vect5_for_docs[str(tup[0])][word]:
-        		x.add(num)
+        	x.add(str(vect5_for_docs[str(tup[0])][word]))
         for t in x:
         	print t
+    print()
+
+

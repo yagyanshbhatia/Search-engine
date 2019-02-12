@@ -1,10 +1,12 @@
-A python Search engine for files
+A python based Search engine that searches for a phrase or word in local text files using
+stemming and indexing, and returns the matches, in order ofrelevance, using
+the tf-idf Algorithm.
 
-run by:
+## Steps to run:
 ```
 python engine.py
 ```
-# sample input
+## sample input
 
 Plese enter folder address 
 /home/yagyansh/Search-engine/Search-engine/sample data set
